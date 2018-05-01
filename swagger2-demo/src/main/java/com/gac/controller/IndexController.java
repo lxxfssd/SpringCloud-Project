@@ -20,7 +20,7 @@ public class IndexController {
     public User getUser(@PathVariable String id){
         User user = new User();
         user.setUserName("222");
-        user.setPassWord("root明羽");
+        user.setPassWord("root");
         return user;
     }
 
@@ -30,7 +30,7 @@ public class IndexController {
     public User getUserDetail(@PathVariable String id){
         User user = new User();
         user.setUserName("333");
-        user.setPassWord("root明羽");
+        user.setPassWord("root");
         return user;
     }
 
