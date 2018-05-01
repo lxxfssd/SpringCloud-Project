@@ -7,3 +7,4 @@ server:
 spring:
   application:
     name: service-member
+#属性对应服务注册中心的配置内容，指定服务注册中心的位置。
