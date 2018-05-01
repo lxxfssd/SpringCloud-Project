@@ -2,8 +2,22 @@ eureka:
   client:
     serviceUrl:
       defaultZone: http://localhost:8761/eureka/
+#### tomcat\u6700\u5927\u63A5\u7EBF\u7A0B\u6570
 server:
   port: 8766
+  tomcat:
+    max-threads: 50
 spring:
   application:
-    name: service-order-feign-demo
+    name: service-order-feign
+feign:
+   hystrix:
+     enabled: true
+###\u8D85\u65F6\u65F6\u95F4
+hystrix:
+   command:
+     default:
+       execution:
+        isolation:
+         thread:
+          timeoutInMilliseconds: 4000
