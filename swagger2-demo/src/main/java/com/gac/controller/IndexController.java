@@ -1,9 +1,7 @@
 package com.gac.controller;
 
 import com.gac.entity.User;
-import io.swagger.annotations.Api;
-import io.swagger.annotations.ApiImplicitParam;
-import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.*;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -14,22 +12,25 @@ import java.util.List;
 @RequestMapping("/swagger")
 public class IndexController {
 
-    @GetMapping("/{id}")
+    @GetMapping("/{name}/{password}")
     @ApiOperation(value="查询用户", notes="根据id来查询用户")
-    @ApiImplicitParam(name = "id", value = "用户ID")
-    public User getUser(@PathVariable String id){
+    @ApiImplicitParams(
+            {@ApiImplicitParam(name = "name", value = "用户名"),
+            @ApiImplicitParam( name = "password", value = "密码")}
+    )
+    public User getUser(@PathVariable String name, @PathVariable String password){
         User user = new User();
-        user.setUserName("222");
-        user.setPassWord("root");
+        user.setUserName(name);
+        user.setPassWord(password);
         return user;
     }
 
-    @GetMapping("/userDetail/{id}")
+    @GetMapping("/userDetail")
     @ApiOperation(value="查询用户详情", notes="根据id来查询用户详情信息")
-    @ApiImplicitParam(name = "id", value = "用户ID")
-    public User getUserDetail(@PathVariable String id){
+
+    public User getUserDetail(@ApiParam(name = "name", value = "用户名") @RequestParam("name") String name){
         User user = new User();
-        user.setUserName("333");
+        user.setUserName(name);
         user.setPassWord("root");
         return user;
     }
